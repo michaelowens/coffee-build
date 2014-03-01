@@ -1,0 +1,15 @@
+{
+  "name": "coffee-build",
+  "main": "./lib/coffee-build",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Build Coffeescript on the fly",
+  "activationEvents": ["coffee-build:build"],
+  "repository": "https://github.com/michaelowens/coffee-build",
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {
+  }
+}
