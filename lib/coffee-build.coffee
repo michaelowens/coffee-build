@@ -1,13 +1,28 @@
+{Subscriber} = require 'emissary'
 CoffeeBuildView = require './coffee-build-view'
 
 module.exports =
-  coffeeBuildView: null
+  class CoffeeBuild
+    Subscriber.includeInto this
 
-  activate: (state) ->
-    @coffeeBuildView = new CoffeeBuildView(state.coffeeBuildViewState)
+    coffeeBuildView: null
 
-  deactivate: ->
-    @coffeeBuildView.destroy()
+    constructor: ->
+      atom.workspaceView.eachEditorView (editorView) =>
+        @handleBufferEvents editorView
 
-  serialize: ->
-    coffeeBuildViewState: @coffeeBuildView.serialize()
+    handleBufferEvents: (editorView) ->
+      buffer = editorView.editor.getBuffer()
+
+      @subscribe buffer, 'saved', =>
+        buffer.transact =>
+          @build()
+
+    build: ->
+      console.log 'building...'
+
+    deactivate: ->
+      @coffeeBuildView.destroy()
+
+    serialize: ->
+      coffeeBuildViewState: @coffeeBuildView.serialize()

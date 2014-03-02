@@ -1,15 +1,24 @@
 {
   "name": "coffee-build",
-  "main": "./lib/coffee-build",
+  "main": "./lib/main",
   "version": "0.1.0",
   "private": true,
   "description": "Build Coffeescript on the fly",
-  "activationEvents": ["coffee-build:build"],
+
+  "author": {
+    "name": "Michael Owens",
+    "email": "michaelowensnl@gmail.com",
+    "url": "http://michaelowens.nl"
+  },
+
   "repository": "https://github.com/michaelowens/coffee-build",
   "license": "MIT",
+
   "engines": {
     "atom": ">0.50.0"
   },
   "dependencies": {
+    "coffee-script": "~1.7.1",
+    "emissary": "1.x"
   }
 }
